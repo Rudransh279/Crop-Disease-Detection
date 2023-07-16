@@ -3,6 +3,6 @@ pandas
 matplotlib
 scikit-learn
 tensorflow
-streamlit
+streamlit-option-menu 
 seaborn
 Keras
