@@ -35,7 +35,7 @@ def predict(model, img):
 # loading the models
 potato_model = tf.keras.models.load_model('potatoes.h5')
 tomato_model_self = tf.keras.models.load_model('tomato.h5')
-tomato_model_transfer = tf.keras.models.load_model('transfer_learning_model.h5')
+# tomato_model_transfer = tf.keras.models.load_model('transfer_learning_model.h5')
 
 
 # sidebar for navigation
@@ -44,10 +44,9 @@ with st.sidebar:
     selected = option_menu('Multiple crop Disease Detection',
 
                            ['Potato Disease Predictor',
-                            'Tomato Disease Predictor 1',
-                            'Tomato Disease Predictor 2'],
+                            'Tomato Disease Predictor 1'],
 
-                           icons=['flower1', 'flower2', 'flower3'],
+                           icons=['flower1', 'flower2'],
 
                            default_index=0)
 
@@ -118,35 +117,35 @@ if selected == 'Tomato Disease Predictor 1':
 
 
 # tomato Disease Prediction page
-if selected == 'Tomato Disease Predictor 2':
+# if selected == 'Tomato Disease Predictor 2':
 
-    # page title
-    st.title('Tomato Disease Prediction using transfer learning')
+#     # page title
+#     st.title('Tomato Disease Prediction using transfer learning')
 
-    # getting the input data from the user
-    img = st.file_uploader("Please upload image of potato leaf", type=["jpg", "png"])
-    st.write("please upload image of single leaf for better result")
+#     # getting the input data from the user
+#     img = st.file_uploader("Please upload image of potato leaf", type=["jpg", "png"])
+#     st.write("please upload image of single leaf for better result")
 
-    # code for Prediction
-    tomato_diagnosis2 = ''
-    confidence = ''
-    result3 = ''
+#     # code for Prediction
+#     tomato_diagnosis2 = ''
+#     confidence = ''
+#     result3 = ''
 
-    # creating a button for Prediction
+#     # creating a button for Prediction
 
-    if st.button('Diagnosis Test Result'):
-        if img is None:
-            st.write("please upload the image first")
+#     if st.button('Diagnosis Test Result'):
+#         if img is None:
+#             st.write("please upload the image first")
 
-        else:
-            tomato_diagnosis2,confidence = predict(tomato_model_transfer, img)
-            result3 = f"diagnosis is: {tomato_diagnosis2}, \n confidence is: {confidence}"
+#         else:
+#             tomato_diagnosis2,confidence = predict(tomato_model_transfer, img)
+#             result3 = f"diagnosis is: {tomato_diagnosis2}, \n confidence is: {confidence}"
 
-            if tomato_diagnosis2 == 'Tomato healthy':
-                img_display= Image.open("tomato_happy.jpg")
-                st.image(img_display)
-            else:
-                img_display = Image.open('sad_tomato.jpg')
-                st.image(img_display)
+#             if tomato_diagnosis2 == 'Tomato healthy':
+#                 img_display= Image.open("tomato_happy.jpg")
+#                 st.image(img_display)
+#             else:
+#                 img_display = Image.open('sad_tomato.jpg')
+#                 st.image(img_display)
 
-            st.success(result3)
+#             st.success(result3)
